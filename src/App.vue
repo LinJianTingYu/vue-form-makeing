@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="fm-header">
+    <!-- <div class="fm-header">
       <img class="fm-logo" src="./assets/logo.png">
       <div class="fm-title" @click="handleHome">{{$t('header.title')}}</div>
 
@@ -30,7 +30,7 @@
         <a class="ad" href="http://form.xiaoyaoji.cn" target="_blank">{{$t('header.advanced')}}</a>
         <a class="ad" href="http://www.xiaoyaoji.cn" target="_blank" v-if="$lang == 'zh-CN'">小幺鸡接口工具</a>
       </div>
-    </div>
+    </div> -->
     <div  class="fm-container"><router-view/></div>
   </div>
 </template>

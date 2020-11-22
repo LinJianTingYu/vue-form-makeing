@@ -161,7 +161,7 @@
           </cus-dialog>
         </el-container>
       </el-main>
-      <el-footer height="30px" style="font-weight: 600;">Powered by <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making">vue-form-making</a></el-footer>
+      <!-- <el-footer height="30px" style="font-weight: 600;">Powered by <a target="_blank" href="https://github.com/GavinZhuLei/vue-form-making">vue-form-making</a></el-footer> -->
     </el-container>
   </div>
 </template>
@@ -294,6 +294,7 @@ export default {
           name: this.$t(`fm.components.fields.${item.type}`)
         }
       })
+      console.log(this)
       this.advanceComponents = this.advanceComponents.map(item => {
         return {
           ...item,

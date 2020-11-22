@@ -20,6 +20,14 @@
           <el-radio-button label="mini">mini</el-radio-button>
         </el-radio-group>
       </el-form-item>
+
+      <el-form-item :label="$t('fm.config.form.cssEnhance')">
+        <el-input v-model="data.cssEnhance" type="textarea"></el-input>
+      </el-form-item>
+
+      <el-form-item :label="$t('fm.config.form.jsEnhance')">
+        <el-input v-model="data.jsEnhance" type="textarea"></el-input>
+      </el-form-item>
     </el-form>
   </div>
 </template>
