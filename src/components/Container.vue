@@ -6,7 +6,7 @@
           <el-aside width="250px">
             <div class="components-list">
               <template v-if="basicFields.length">
-                <div class="widget-cate">{{$t('fm.components.basic.title')}}</div>
+                <div class="widget-cate">{{fm.components.basic.title}}</div>
                 <draggable tag="ul" :list="basicComponents" 
                   v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
                   @end="handleMoveEnd"
@@ -24,7 +24,7 @@
               </template>
               
               <template v-if="advanceFields.length">
-                <div class="widget-cate">{{$t('fm.components.advance.title')}}</div>
+                <div class="widget-cate">{{fm.components.advance.title}}</div>
                 <draggable tag="ul" :list="advanceComponents" 
                   v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
                   @end="handleMoveEnd"
@@ -43,7 +43,7 @@
 
               
               <template v-if="layoutFields.length">
-                <div class="widget-cate">{{$t('fm.components.layout.title')}}</div>
+                <div class="widget-cate">{{fm.components.layout.title}}</div>
                 <draggable tag="ul" :list="layoutComponents" 
                   v-bind="{group:{ name:'people', pull:'clone',put:false},sort:false, ghostClass: 'ghost'}"
                   @end="handleMoveEnd"
@@ -67,11 +67,11 @@
             <el-header class="btn-bar" style="height: 45px;">
               <slot name="action">
               </slot>
-              <el-button v-if="upload" type="text" size="medium" icon="el-icon-upload2" @click="handleUpload">{{$t('fm.actions.import')}}</el-button>
-              <el-button v-if="clearable" type="text" size="medium" icon="el-icon-delete" @click="handleClear">{{$t('fm.actions.clear')}}</el-button>
-              <el-button v-if="preview" type="text" size="medium" icon="el-icon-view" @click="handlePreview">{{$t('fm.actions.preview')}}</el-button>
-              <el-button v-if="generateJson" type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">{{$t('fm.actions.json')}}</el-button>
-              <el-button v-if="generateCode" type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">{{$t('fm.actions.code')}}</el-button>
+              <el-button v-if="upload" type="text" size="medium" icon="el-icon-upload2" @click="handleUpload">{{fm.actions.import}}</el-button>
+              <el-button v-if="clearable" type="text" size="medium" icon="el-icon-delete" @click="handleClear">{{fm.actions.clear}}</el-button>
+              <el-button v-if="preview" type="text" size="medium" icon="el-icon-view" @click="handlePreview">{{fm.actions.preview}}</el-button>
+              <el-button v-if="generateJson" type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">{{fm.actions.json}}</el-button>
+              <el-button v-if="generateCode" type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">{{fm.actions.code}}</el-button>
             </el-header>
             <el-main :class="{'widget-empty': widgetForm.list.length == 0}">
               
@@ -82,8 +82,8 @@
           <el-aside class="widget-config-container">
             <el-container>
               <el-header height="45px">
-                <div class="config-tab" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">{{$t('fm.config.widget.title')}}</div>
-                <div class="config-tab" :class="{active: configTab=='form'}" @click="handleConfigSelect('form')">{{$t('fm.config.form.title')}}</div>
+                <div class="config-tab" :class="{active: configTab=='widget'}" @click="handleConfigSelect('widget')">{{fm.config.widget.title}}</div>
+                <div class="config-tab" :class="{active: configTab=='form'}" @click="handleConfigSelect('form')">{{fm.config.form.title}}</div>
               </el-header>
               <el-main class="config-content">
                 <widget-config v-show="configTab=='widget'" :data="widgetFormSelect"></widget-config>
@@ -109,8 +109,8 @@
             </generate-form>
 
             <template slot="action">
-              <el-button type="primary" @click="handleTest">{{$t('fm.actions.getData')}}</el-button>
-              <el-button @click="handleReset">{{$t('fm.actions.reset')}}</el-button>
+              <el-button type="primary" @click="handleTest">{{fm.actions.getData}}</el-button>
+              <el-button @click="handleReset">{{fm.actions.reset}}</el-button>
             </template>
           </cus-dialog>
 
@@ -122,7 +122,7 @@
             width="800px"
             form
           >
-            <el-alert type="info" :title="$t('fm.description.uploadJsonInfo')"></el-alert>
+            <el-alert type="info" :title="fm.description.uploadJsonInfo"></el-alert>
             <div id="uploadeditor" style="height: 400px;width: 100%;">{{jsonEg}}</div>
           </cus-dialog>
 
@@ -137,7 +137,7 @@
             <div id="jsoneditor" style="height: 400px;width: 100%;">{{jsonTemplate}}</div>
             
             <template slot="action">
-              <el-button type="primary" class="json-btn" :data-clipboard-text="jsonCopyValue">{{$t('fm.actions.copyData')}}</el-button>
+              <el-button type="primary" class="json-btn" :data-clipboard-text="jsonCopyValue">{{fm.actions.copyData}}</el-button>
             </template>
           </cus-dialog>
 
@@ -291,20 +291,20 @@ export default {
       this.basicComponents = this.basicComponents.map(item => {
         return {
           ...item,
-          name: this.$t(`fm.components.fields.${item.type}`)
+          name: this.fm.components.fields[item.type]
         }
       })
       console.log(this)
       this.advanceComponents = this.advanceComponents.map(item => {
         return {
           ...item,
-          name: this.$t(`fm.components.fields.${item.type}`)
+          name: this.fm.components.fields[item.type]
         }
       })
       this.layoutComponents = this.layoutComponents.map(item => {
         return {
           ...item,
-          name: this.$t(`fm.components.fields.${item.type}`)
+          name: this.fm.components.fields[item.type]
         }
       })
     },
@@ -350,7 +350,7 @@ export default {
         if (!this.jsonClipboard) {
           this.jsonClipboard = new Clipboard('.json-btn')
           this.jsonClipboard.on('success', (e) => {
-            this.$message.success(this.$t('fm.message.copySuccess'))
+            this.$message.success(this.fm.message.copySuccess)
           })
         }
         this.jsonCopyValue = JSON.stringify(this.widgetForm)
